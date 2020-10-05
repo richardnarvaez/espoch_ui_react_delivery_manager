@@ -135,7 +135,8 @@ const OrdersFragment = (props) => {
 		updates['orders/' + _id + '/state'] = false
 		updates['/orders_business/' + _id_business + '/' + _id] = false
 		updates['/orders_users/' + _id_user + '/' + _id] = false
-		this.props.firebase.bRef.update(updates)
+		props.firebase.bRef.update(updates)
+		alert('El pedido fue procesado con EXITO')
 	}
 
 	const clickCardRequest = (item, i) => {
@@ -164,6 +165,7 @@ const OrdersFragment = (props) => {
 								height: '89vh',
 								whiteSpace: 'nowrap',
 								background: '#f5f5fa',
+								borderRight: 'solid 0.5px #ccc',
 							}}>
 							<div
 								style={{
@@ -279,7 +281,7 @@ const OrdersFragment = (props) => {
 															<p>Items:{item.count_items}</p>
 														</div>
 														<p>
-															<b>${item.total}</b>
+															<b>${Math.round(item.total)}</b>
 														</p>
 													</div>
 												)
@@ -312,15 +314,17 @@ const OrdersFragment = (props) => {
 											background: '#f5f5fa',
 											margin: 16,
 										}}>
-										<h1>Tienes {count_orders_business} PEDIDOS en ESPERA</h1>
-										<p>Total despachados HOY: 3</p>
+										<h1> 1 de {productDetails.count_types} Listo</h1>
+										<p>Lista de productos listos para enviar</p>
 									</div>
 									<div style={{ padding: 16 }}>
 										<div>
 											<h4>Informacion del pedido</h4>
 											<p>ID: {productDetails && productDetails._id}</p>
 										</div>
-										<div className="row mt-5 mb-5">
+										<div
+											className="row mt-4 mb-4"
+											style={{ border: 'solid 0.5px #f5f5fa', padding: 16 }}>
 											<div className="col-4">
 												<p>Realizado</p>
 												<p style={{ fontWeight: 'bold' }}>Hace 15min</p>
@@ -409,6 +413,7 @@ const OrdersFragment = (props) => {
 										{productDetails && (
 											<div className="mt-4">
 												<button
+													className="btn btn-success"
 													onClick={() =>
 														aceptarPedido(
 															productDetails._id,
@@ -418,13 +423,27 @@ const OrdersFragment = (props) => {
 													}>
 													Aceptar
 												</button>
-												<button>Rechazar</button>
+												<button
+													onClick={() => alert('Click en RECHAZAR ID:' + productDetails._id)}
+													className="btn btn-light ml-2">
+													Rechazar
+												</button>
 											</div>
 										)}
 									</div>
 								</>
 							) : (
-								<> Tu local esta abierto da click sobre un pedido para empezar</>
+								<div
+									className="d-flex justify-content-center align-items-center"
+									style={{
+										flexDirection: 'column',
+										height: '100%',
+										textAlign: 'center',
+									}}>
+									<h1>🚀</h1>
+									<h1>Todo listo</h1>
+									<p>← Haz click en cualquier pedido para empezar</p>
+								</div>
 							)}
 						</div>
 					</div>

@@ -70,6 +70,7 @@ class CategoryFragment extends React.Component {
 
 	addCategory = (e) => {
 		e.preventDefault()
+		
 		const txt_title = document.getElementById('title_category').value
 		const txt_description = document.getElementById('description_category').value
 
@@ -92,6 +93,7 @@ class CategoryFragment extends React.Component {
 				} else {
 					console.log('Synchronization succeeded')
 					alert('Se agrego con exito la categoria ' + txt_title)
+					$('#modalAdd').modal('toggle')
 					document.getElementById('title_category').value = ''
 					document.getElementById('description_category').value = ''
 				}
@@ -135,7 +137,7 @@ class CategoryFragment extends React.Component {
 			} else {
 				console.log('Synchronization succeeded')
 				alert('Se agrego con exito el producto ' + txt_title)
-
+				$('#modalProduct').modal('toggle')
 				document.getElementById('image_product').value = ''
 				document.getElementById('title_product').value = ''
 				document.getElementById('description_product').value = ''
@@ -155,10 +157,11 @@ class CategoryFragment extends React.Component {
 					<div className="container">
 						{list_categories !== null && list_categories !== undefined ? (
 							<>
-								<div className="row justify-content-between cont-box-user">
+								<div className="row justify-content-between cont-box-user mt-5">
 									<div className="col-4 cont-users">
 										<div className="cont-name-users">
 											<h1 className="">Lista de Productos</h1>
+											<p>Crea tu lista de productos y categorias</p>
 										</div>
 									</div>
 								</div>
@@ -392,6 +395,91 @@ class CategoryFragment extends React.Component {
 							</form>
 						</div>
 					</div>
+
+					{/* Modal Product */}
+					<div
+						className="modal fade"
+						id="modalEditProduct"
+						tabIndex="-1"
+						role="dialog"
+						aria-labelledby="exampleModalCenterTitle"
+						aria-hidden="true">
+						<div className="modal-dialog modal-dialog-centered" role="document">
+							<form
+								onSubmit={() => {
+									alert('Solicitud enviada')
+								}}
+								className="modal-content">
+								<div className="modal-header">
+									<h5 className="modal-title" id="exampleModalCenterTitle">
+										Editar
+									</h5>
+									<button
+										type="button"
+										className="close"
+										data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div className="modal-body">
+									{/* priority: 2 */}
+									{/* status:true */}
+									<p>Imagen del producto</p>
+									<input id="image_product" type="url" required />
+
+									<p>Nombre del producto</p>
+									<input
+										id="title_product"
+										pattern="^[a-z A-Z \d ,.ñáéíóú]{2,20}$"
+										required
+									/>
+
+									<p>Descripción del producto</p>
+									<input
+										id="description_product"
+										pattern="^[a-z A-Z \d ,.ñáéíóú]{2,60}$"
+										required
+									/>
+
+									<p>Precio</p>
+									<input
+										id="price_product"
+										pattern="\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})?"
+										required
+									/>
+
+									<p>Categoria</p>
+									<select className="custom-select" id="selectCategory">
+										{list_categories !== null &&
+											list_categories.map((item, i) => {
+												return <option value={item._id}>{item.title}</option>
+											})}
+									</select>
+								</div>
+
+								<div className="modal-footer">
+									<button
+										onClick={() => {
+											$('#modalEditProduct').modal('toggle')
+											alert('Fue eliminado correctamente')
+										}}
+										className="btn btn-primary">
+										Eliminar
+									</button>
+									<button
+										type="button"
+										className="btn btn-secondary"
+										data-dismiss="modal">
+										Cancelar
+									</button>
+									<button type="submit" className="btn btn-primary">
+										Aceptar
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
 				</>
 			)
 		}
@@ -459,10 +547,16 @@ class ProductRow extends React.Component {
 		const { item } = this.props
 		return (
 			<>
-				<li class="table-row">
+				<li
+					onClick={() => $('#modalEditProduct').modal('toggle')}
+					class="table-row">
 					<div class="column column-1 center-content">
 						<img
-							style={{ borderRadius: 1000 }}
+							style={{
+								borderRadius: 8,
+								objectFit: 'cover',
+								boxShadow: '0 2px 2px #0000001a',
+							}}
 							src={item.image}
 							width={50}
 							height={50}
