@@ -16,7 +16,7 @@ export default function Home() {
 				<p className={styles.description}>Administrar productos de Delivery</p>
 
 				<div className={styles.grid}>
-					<a href="/admin" className={styles.card}>
+					<a href="https://github.com/richardnarvaez/react_delivery_manager_ui" className={styles.card}>
 						<h3>Github</h3>
 						<p>Proyecto completo</p>
 					</a>
