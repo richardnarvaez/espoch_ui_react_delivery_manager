@@ -1,0 +1,142 @@
+.section {
+	text-align: center;
+	height: 100%;
+	margin: 0 auto;
+}
+.toggle-button {
+	margin: 0 20px;
+}
+
+.toggle-button {
+	position: relative;
+	display: inline-block;
+	color: #fff;
+}
+.toggle-button label {
+	display: inline-block;
+	text-transform: uppercase;
+	cursor: pointer;
+	text-align: left;
+}
+.toggle-button input {
+	display: none;
+}
+.toggle-button__icon {
+	cursor: pointer;
+	pointer-events: none;
+}
+.toggle-button__icon:before,
+.toggle-button__icon:after {
+	content: '';
+	position: absolute;
+	top: 45%;
+	left: 35%;
+	transition: 0.2s ease-out;
+}
+.toggle-button__icon.revert:before,
+.toggle-button__icon.revert:after {
+	background: #ff5335 !important;
+}
+.toggle-button__icon.revert.isActive:before,
+.toggle-button__icon.revert.isActive:after {
+	background: #61b136 !important;
+}
+
+.toggle-button--aava label {
+	height: 35px;
+	line-height: 37px;
+	transition: all 0.2s;
+	border-radius: 2rem;
+}
+.toggle-button--aava label:before,
+.toggle-button--aava label:after {
+	position: absolute;
+	right: 1.5rem;
+	transition: all 0.2s 0.1s ease-out;
+}
+.toggle-button--aava label:before {
+	content: attr(data-on-text);
+}
+.toggle-button--aava label:after {
+	content: attr(data-off-text);
+}
+
+.toggle-button--aava input[type='checkbox'] + label {
+	width: 105px;
+	background: #ff5335;
+}
+.toggle-button--aava input[type='checkbox'] + label:before {
+	opacity: 0;
+	transform: translate(0, 20px);
+}
+.toggle-button--aava input[type='checkbox'] + label:after {
+	opacity: 1;
+	transform: translate(0, 0);
+}
+
+.toggle-button--aava input[type='checkbox']:checked ~ label {
+	width: 105px;
+	background: #61b136;
+}
+.toggle-button--aava input[type='checkbox']:checked ~ label:before {
+	opacity: 1;
+	transform: translate(0, 0);
+}
+.toggle-button--aava input[type='checkbox']:checked ~ label:after {
+	opacity: 0;
+	transform: translate(0, -20px);
+}
+
+.toggle-button--aava
+	input[type='checkbox']:checked
+	~ .toggle-button__icon:before {
+	transform: translate(-10%, 100%) rotate(45deg);
+	width: 9.66667px;
+}
+
+.toggle-button--aava
+	input[type='checkbox']:checked
+	~ .toggle-button__icon:after {
+	transform: translate(30%) rotate(-45deg);
+}
+
+.toggle-button--aava .toggle-button__icon {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 35px;
+	width: 50px;
+}
+.toggle-button--aava .toggle-button__icon:before,
+.toggle-button--aava .toggle-button__icon:after {
+	height: 3px;
+	border-radius: 3px;
+	background: #fff;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.toggle-button--aava .toggle-button__icon:before {
+	width: 15px;
+	transform: rotate(45deg);
+}
+.toggle-button--aava .toggle-button__icon:after {
+	width: 15px;
+	transform: rotate(-45deg);
+}
+
+@keyframes icon-hover-before {
+	0% {
+		transform: rotate(45deg) scale(1, 1);
+	}
+	100% {
+		transform: rotate(45deg) scale(1.2, 1.2);
+	}
+}
+
+@keyframes icon-hover-after {
+	0% {
+		transform: rotate(-45deg) scale(1, 1);
+	}
+	50% {
+		transform: rotate(-45deg) scale(1.2, 1.2);
+	}
+}
