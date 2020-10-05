@@ -10,14 +10,19 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
+				<img src="./logo-2.png" width="100px" />
 				<h1 className={styles.title}>Prueba de Usabilidad</h1>
 
 				<p className={styles.description}>Administrar productos de Delivery</p>
 
 				<div className={styles.grid}>
 					<a href="/admin" className={styles.card}>
-						<h3>Pagina de Inico &rarr;</h3>
-						<p>Toda la presentacion</p>
+						<h3>Github</h3>
+						<p>Proyecto completo</p>
+					</a>
+					<a href="/admin" className={styles.card}>
+						<h3>Pagina Admin &rarr;</h3>
+						<p>Prueba</p>
 					</a>
 				</div>
 			</main>

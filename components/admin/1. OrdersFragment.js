@@ -209,7 +209,7 @@ const OrdersFragment = (props) => {
 								</div>
 							</div>
 							<div style={{ padding: 16 }}>
-								<ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+								{/* <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
 									<li className="nav-item" role="presentation">
 										<a
 											className="nav-link active"
@@ -246,7 +246,7 @@ const OrdersFragment = (props) => {
 											Entregados
 										</a>
 									</li>
-								</ul>
+								</ul> */}
 								<div className="tab-content" id="pills-tabContent">
 									<div
 										className="tab-pane fade show active"
@@ -274,12 +274,13 @@ const OrdersFragment = (props) => {
 															boxShadow: '0 1px 2px #0000001a',
 															borderRadius: 10,
 														}}>
-														<div>Titulo</div>
-														<p> Direccion </p>
-
-														<p>Total: ${item.total}</p>
-														<p>Tiempo: {formatTime(item.date)}</p>
-														<p>Items:{item.count_items}</p>
+														<div>
+															<p>Ticket: {item.date}</p>
+															<p>Items:{item.count_items}</p>
+														</div>
+														<p>
+															<b>${item.total}</b>
+														</p>
 													</div>
 												)
 											})}
@@ -321,12 +322,12 @@ const OrdersFragment = (props) => {
 										</div>
 										<div className="row mt-5 mb-5">
 											<div className="col-4">
-												<p>Hora del pedido</p>
-												<p style={{ fontWeight: 'bold' }}>15min</p>
+												<p>Realizado</p>
+												<p style={{ fontWeight: 'bold' }}>Hace 15min</p>
 											</div>
 											<div className="col-4">
-												<p>Calle</p>
-												<p style={{ fontWeight: 'bold' }}>C/ Nombre</p>
+												<p>Direccion</p>
+												<p style={{ fontWeight: 'bold' }}>Av. Milton Reyes</p>
 											</div>
 											<div
 												onClick={() =>
@@ -335,8 +336,8 @@ const OrdersFragment = (props) => {
 												className="bt-chat-pedidos col-4"
 												style={{ alignItems: 'center', display: 'flex' }}>
 												<div>
-													<p>Nombre de usuario</p>
-													<p style={{ fontWeight: 'bold' }}>+593999999998</p>
+													<p>Sergio Vera</p>
+													<p style={{ fontWeight: 'bold' }}>+59399099899</p>
 												</div>
 												<svg
 													style={{
@@ -374,14 +375,32 @@ const OrdersFragment = (props) => {
 													</div>
 
 													<div
-														className="col-8"
+														className="col-6"
 														style={{
 															display: 'flex',
 															flexDirection: 'column',
 															justifyContent: 'center',
 														}}>
-														<p>{itemE.title}</p>
+														<p style={{ fontWeight: 'bold' }}>{itemE.title}</p>
+														<p>iaASd9saAsnasc82x-dasSSD</p>
+													</div>
+													<div
+														className="col-2"
+														style={{
+															display: 'flex',
+															flexDirection: 'column',
+															justifyContent: 'center',
+														}}>
 														<p>x{itemE.count}</p>
+													</div>
+													<div
+														className="col-2"
+														style={{
+															display: 'flex',
+															flexDirection: 'column',
+															justifyContent: 'center',
+														}}>
+														<p>$0.00</p>
 													</div>
 													<hr></hr>
 												</div>
