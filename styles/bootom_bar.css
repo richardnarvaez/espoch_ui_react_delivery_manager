@@ -75,7 +75,8 @@
 }
 .bottomMenu .active.bm3 svg path,
 .bottomMenu .bm3:hover svg path {
-	fill: #1bca72;
+	color: #03a9f4;
+	/* fill: #1bca72; */
 }
 .bottomMenu .active.bm4 {
 	color: #03a9f4;
@@ -84,7 +85,8 @@
 	background: #f3213d1a; */
 }
 .bottomMenu .bm4:hover {
-	color: rgb(244, 3, 83);
+	color: #03a9f4;
+	/* color: rgb(244, 3, 83); */
 }
 .bottomMenu .active.bm5 {
 	color: #03a9f4;
